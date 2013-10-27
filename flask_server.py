@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import os
 from flask import Flask
 
 app = Flask(__name__)
@@ -11,7 +12,9 @@ PAGE = """<!DOCTYPE html>
     WebSocket Test
 </title>
 <script language="javascript" type="text/javascript">
-var wsUri = "ws://echo.websocket.org/";
+var wsUri = "ws://"""
+PAGE += os.uname()[1]
+PAGE += """:8123/";
 var output;
 
 function init() {
